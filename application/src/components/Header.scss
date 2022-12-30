@@ -3,11 +3,19 @@ nav.Header {
   place-items           : center;
   padding               : 20px;
 
-  & > img {
+  img {
     width: 160px;
-  }
+    transition      : .5s all;
 
-  & > img:nth-child(2) {
-    width: 160px;
+    &:hover {
+      transform     : scale(1.1);
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  nav.Header {
+    max-width: 375px;
+    padding: 20px;
   }
 }

@@ -1,0 +1,10 @@
+div.Impressum {
+  display         : grid;
+  place-content   : center;
+  place-items     : center;
+  height          : 80%;
+
+  & > h1 {
+    padding-bottom: 10px;
+  }
+}

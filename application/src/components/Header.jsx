@@ -1,9 +1,12 @@
+import { Link } from 'react-router-dom';
 import './Header.scss';
 
 export default function Header() {
   return(
     <nav className='Header'>
-      <img src='font.png'></img>
+      <Link to="/">
+        <img src='font.png'></img>
+      </Link>
     </nav>
   )
 }

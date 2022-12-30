@@ -31,7 +31,7 @@ export default function Main() {
     return forecastData?.list?.slice(1,4).map((forecast) => {
      return (
       <div className='forecast' key={forecast.dt}>
-        <h3>{new Date(forecast.dt * 1000).toLocaleTimeString()}</h3>
+        <h3>{new Date(forecast.dt * 1000).toLocaleTimeString([], {timeStyle: 'short'})}</h3>
         <img src={`http://openweathermap.org/img/wn/${ forecast.weather[0].icon}@2x.png`}></img>
         <p>{Math.round(forecast.main?.temp - 273)}°C</p>
       </div>
@@ -70,12 +70,13 @@ export default function Main() {
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}`).then(
           r => r.json()
         ).then( 
-          data => { saveWeatherData(data)
-          setLoading(false);
-          getDaily()
+          data => { 
+            saveWeatherData(data)
+            setLoading(false);
           }
         )
       })
+      getDaily()
     }
   }
 
@@ -135,7 +136,7 @@ export default function Main() {
           <div className='current'>
 
             <div className='currentDate'>
-              <p>{new Date(weatherData.dt * 1000).toDateString()} | Aktuelle Uhrzeit: {new Date(weatherData.dt * 1000).toLocaleTimeString()}</p>
+              <p>{new Date(weatherData.dt * 1000).toDateString()} | Aktuelle Uhrzeit: {new Date(weatherData.dt * 1000).toLocaleTimeString([], {timeStyle: 'short'})}</p>
               <h1>{weatherData.name}, {weatherData.sys.country}</h1>
               <p>{weatherData.weather[0].main}</p>
             </div>
@@ -153,9 +154,9 @@ export default function Main() {
             </div>
 
             <div className='extraInfo'>
-              <h4>Aufgang: {new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString()} |</h4>
-              <h4>Untergang: {new Date(weatherData.sys.sunset * 1000).toLocaleTimeString()} |</h4>
-              <h4>Min: {Math.round(main?.temp_min - 273)}°C |</h4>
+              <h4>Aufgang: {new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString([], {timeStyle: 'short'})}</h4>
+              <h4>Untergang: {new Date(weatherData.sys.sunset * 1000).toLocaleTimeString([], {timeStyle: 'short'})}</h4>
+              <h4>Min: {Math.round(main?.temp_min - 273)}°C</h4>
               <h4>Max: {Math.round(main?.temp_max - 273)}°C</h4>
             </div>
 

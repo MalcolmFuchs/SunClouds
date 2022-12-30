@@ -107,20 +107,18 @@ div.main {
   
     }
 
-    & > .forecastBox {
+    & > div.forecastBox {
       display             : grid;
       grid-template-rows  : repeat(3, 150px);
       max-width           : 150px;
       row-gap             : 10px;
 
-      & > .forecast {
-        display             : grid;
-        place-content       : center;
-        place-items         : center;
-        border-radius       : 15px;
-        padding             : 10px;
-
-
+      & > div.forecast {
+        display                 : grid;
+        place-content           : center;
+        place-items             : center;
+        border-radius           : 15px;
+        padding                 : 10px;
         background-color        : rgba(145, 194, 240, 0.3);
         box-shadow              : rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
         backdrop-filter         : blur(20px);
@@ -130,4 +128,57 @@ div.main {
     }
   }
 
+}
+
+@media (max-width: 600px) {
+
+  div.main {
+    max-width: 375px;
+    min-width: unset;
+
+    & > div.input {
+      grid-template-columns : 250px 20px 20px;
+
+      & > input {
+        min-width     : unset;
+        max-width     : 250px;
+      }
+    }
+
+    & > div.middle {
+      grid-template-columns  : 375px;
+      grid-template-rows     : auto auto;
+      border-radius          : 20px;
+      padding-bottom         : 20px;
+
+      & > div.current {
+        max-width             : 375px;
+        background-color      : rgba(255,255,255,0.2);
+        grid-template-rows    : 150px 1fr 75px;
+
+        & > div.currentDate {
+          max-width       : 375px;
+        }
+
+        & > div.currentWeather {
+          max-width             : 375px;
+          grid-template-columns : none;
+          grid-template-rows    : 75px 75px 75px;
+        }
+      }
+
+      & > div.forecastBox {
+        padding-top           : 20px;
+        grid-template-rows    : none;
+        grid-template-columns : repeat(3, 120px);
+        column-gap            : 5px;
+        height                : 200px;
+
+        & > div.forecast {
+          background-color    : rgba(255,255,255,0.2);
+        }
+      }
+    }
+
+  }
 }
