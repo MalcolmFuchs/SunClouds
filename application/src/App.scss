@@ -1,0 +1,8 @@
+div.app {
+  display             : grid;
+  grid-template-rows  : auto 1fr auto;
+  align-items         : flex-start;
+  height              : 100vh;
+  padding             : 20px 0px;
+  row-gap: 20px;
+}

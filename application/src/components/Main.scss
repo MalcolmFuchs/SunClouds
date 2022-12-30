@@ -1,0 +1,133 @@
+div.main {
+  display         : grid;
+  place-content   : center;
+  place-items     : center;
+  color           : white;
+  row-gap         : 30px;
+  min-width       : 550px;
+
+  & > div.input {
+    display               : grid;
+    grid-template-columns : 700px 20px 20px;
+    column-gap            : 20px;
+    width                 : 100%;
+    place-items           : center;
+
+    & > input {
+      height        : 40px;
+      width         : 100%;
+      min-width     : 450px;
+      border-radius : 10px;
+      border        : none;
+      text-align    : center;
+      box-shadow    : rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+    }
+
+    & > img {
+      width     : 20px;
+      cursor    : pointer;
+      transition: all 0.5s;
+
+      &:hover {
+        transform : scale(1.25);
+      }
+    }
+
+  }
+
+  & > div.middle {
+    display                : grid;
+    grid-template-columns  : 1fr 200px;
+    column-gap             : 20px;
+
+    & > div.current {
+      display             : grid;
+      padding-top         : 40px;
+      grid-template-rows  : 150px 1fr 100px;
+      min-height          : 450px;
+      background-color    : rgba(145, 194, 240, 0.2);
+      box-shadow          : rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+      border-radius       : 15px;
+      max-width           : 700px;
+      padding             : 20px;
+      backdrop-filter     : blur(15px);
+  
+      -webkit-backdrop-filter: blur(15px);
+  
+  
+      & > div.currentDate {
+        display       : grid;
+        place-content : center;
+        place-items   : center;
+        font-size     : 22px;
+        row-gap       : 10px;
+  
+        & > h1 {
+          font-size   : 36px;
+          font-weight: bolder;
+        }
+  
+        & > p:nth-child(3) {
+          font-size: 20px;
+        }
+      }
+  
+      & > div.currentWeather {
+        display               : grid;
+        row-gap               : 40px;
+        place-content         : center;
+        place-items           : center;
+        grid-template-columns : 1fr 1fr 1fr;
+  
+        & > h1 {
+          font-size: 72px;
+        }
+  
+        & > div.currentInfo {
+          display               : grid;
+          grid-template-columns : 1fr 1fr;
+          grid-template-rows    : 1fr 1fr 1fr;
+          column-gap            : 10px;
+        }
+  
+      }
+  
+      & > div.extraInfo {
+        display               : grid;
+        align-content         : flex-end;
+        justify-content       : center;
+        grid-template-columns : auto auto auto auto;
+        column-gap            : 10px;
+        
+        & > p {
+          text-align: center;
+          font-size: bolder;
+        }
+      }
+  
+    }
+
+    & > .forecastBox {
+      display             : grid;
+      grid-template-rows  : repeat(3, 150px);
+      max-width           : 150px;
+      row-gap             : 10px;
+
+      & > .forecast {
+        display             : grid;
+        place-content       : center;
+        place-items         : center;
+        border-radius       : 15px;
+        padding             : 10px;
+
+
+        background-color        : rgba(145, 194, 240, 0.3);
+        box-shadow              : rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+        backdrop-filter         : blur(20px);
+        -webkit-backdrop-filter : blur(20px);
+
+      }
+    }
+  }
+
+}

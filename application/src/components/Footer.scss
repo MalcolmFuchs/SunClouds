@@ -1,0 +1,17 @@
+div.Footer {
+  display               : grid;
+  place-content         : center;
+  place-items           : center;
+  grid-template-columns : 1fr 4fr 1fr;
+  column-gap            : 50px;
+  font-size: 12px;
+
+  & > a {
+    text-decoration : none;
+    transition      : .5s all;
+
+    &:hover {
+      transform     : scale(1.1);
+    }
+  }
+}
