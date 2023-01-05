@@ -76,7 +76,7 @@ export default function Main() {
           }
         )
       })
-      getDaily()
+      getDaily();
     }
   }
 
@@ -89,8 +89,11 @@ export default function Main() {
   }
 
   const {
-    dt:
-    main
+    main,
+    wind,
+    sys,
+    dt,
+    weather
 
   } = weatherData
 
@@ -138,9 +141,9 @@ export default function Main() {
           <div className='current'>
 
             <div className='currentDate'>
-              <p>{new Date(weatherData.dt * 1000).toDateString()} | Uhrzeit: {new Date(weatherData.dt * 1000).toLocaleTimeString([], {timeStyle: 'short'})}</p>
-              <h1>{weatherData.name}, {weatherData.sys.country}</h1>
-              <p>{weatherData.weather[0].main}</p>
+              <p>{new Date(dt * 1000).toDateString()} | Uhrzeit: {new Date(dt * 1000).toLocaleTimeString([], {timeStyle: 'short'})}</p>
+              <h1>{weatherData.name}, {sys.country}</h1>
+              <p>{weather[0].main}</p>
             </div>
 
             <div className='currentWeather'>
@@ -148,16 +151,16 @@ export default function Main() {
               <h1>{Math.round(main?.temp - 273)}°C</h1>
 
               <div className='currentInfo'>
-                <p>Gefühlt:</p> <p>{Math.round(weatherData.main?.feels_like - 273)}°C</p>
-                <p>Windstärke:</p> <p>{weatherData.wind.speed} Km/h</p>
-                <p>Luftfeuchtigkeit:</p> <p>{weatherData.main.humidity}%</p>
+                <p>Gefühlt:</p> <p>{Math.round(main?.feels_like - 273)}°C</p>
+                <p>Windstärke:</p> <p>{wind.speed} Km/h</p>
+                <p>Luftfeuchtigkeit:</p> <p>{main.humidity}%</p>
               </div>
 
             </div>
 
             <div className='extraInfo'>
-              <div><img alt='Sonnenaufgang' src='/sunrise.svg'></img><h4>: {new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString([], {timeStyle: 'short'})}</h4></div>
-              <div><img alt='Sonnenuntergang' src='/sunset.svg'></img><h4>: {new Date(weatherData.sys.sunset * 1000).toLocaleTimeString([], {timeStyle: 'short'})}</h4></div>
+              <div><img alt='Sonnenaufgang' src='/sunrise.svg'></img><h4>: {new Date(sys.sunrise * 1000).toLocaleTimeString([], {timeStyle: 'short'})}</h4></div>
+              <div><img alt='Sonnenuntergang' src='/sunset.svg'></img><h4>: {new Date(sys.sunset * 1000).toLocaleTimeString([], {timeStyle: 'short'})}</h4></div>
               
               <h4>H: {Math.round(main?.temp_min - 273)}°C</h4>
               <h4>L: {Math.round(main?.temp_max - 273)}°C</h4>
