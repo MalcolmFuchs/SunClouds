@@ -36,7 +36,7 @@ export default function Main() {
      return (
       <div className='forecast' key={forecast.dt}>
         <h3>{new Date(forecast.dt * 1000).toLocaleTimeString([], {timeStyle: 'short'})}</h3>
-        <img alt='WetterBild' src={`http://openweathermap.org/img/wn/${ forecast.weather[0].icon}@2x.png`}></img>
+        <img alt='WetterBild' src={`https://openweathermap.org/img/wn/${ forecast.weather[0].icon}@2x.png`}></img>
         <p>{Math.round(forecast.main?.temp - 273)}°C</p>
       </div>
      )
@@ -60,7 +60,7 @@ export default function Main() {
     }
 
   const iconCode = () =>
-  `http://openweathermap.org/img/wn/${ weatherData.weather[0].icon}@2x.png`;
+  `https://openweathermap.org/img/wn/${ weatherData.weather[0].icon}@2x.png`;
 
  const getLocation = () => {
   setLoading(true);
