@@ -11,15 +11,19 @@ export default function Main() {
 
   const saveWeatherData = (data) => {
     setWeatherData(data)
-    setCity(data.name)
+    changeCity(data.name)
   }
 
   const saveForecastData = (data) => {
     setForecastData(data)
-    setCity(data.city.name)
   }
 
-  const getDaily = () => {
+  const changeCity = (city) => {
+    setCity(city);
+    getDaily(city);
+  }
+
+  const getDaily = (city) => {
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${APIkey}`).then(
       r => r.json()
     ).then(
@@ -53,7 +57,6 @@ export default function Main() {
       ).then(
         data => saveWeatherData(data)
       )
-      getDaily()
     }
 
   const iconCode = () =>
@@ -76,7 +79,6 @@ export default function Main() {
           }
         )
       })
-      getDaily();
     }
   }
 
@@ -105,7 +107,7 @@ export default function Main() {
         <input 
         className   ='searchInput'
         placeholder ='Stadt eingeben...'
-        onChange    ={e => setCity(e.target.value)}
+        onChange    ={e => changeCity(e.target.value)}
         value       ={city}
         onKeyDown   ={getWeatherByCity}
         />
