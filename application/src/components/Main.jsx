@@ -32,7 +32,7 @@ export default function Main() {
      return (
       <div className='forecast' key={forecast.dt}>
         <h3>{new Date(forecast.dt * 1000).toLocaleTimeString([], {timeStyle: 'short'})}</h3>
-        <img src={`http://openweathermap.org/img/wn/${ forecast.weather[0].icon}@2x.png`}></img>
+        <img alt='WetterBild' src={`http://openweathermap.org/img/wn/${ forecast.weather[0].icon}@2x.png`}></img>
         <p>{Math.round(forecast.main?.temp - 273)}°C</p>
       </div>
      )
@@ -89,7 +89,7 @@ export default function Main() {
   }
 
   const {
-    dt: date,
+    dt:
     main
 
   } = weatherData
@@ -109,10 +109,12 @@ export default function Main() {
         <img 
         src='search.svg'
         onClick={getCity}
+        alt='suche'
         />
         <img 
         src='location.svg'
         onClick={getLocation}
+        alt='Standort'
         />
       </div>
 
@@ -136,17 +138,17 @@ export default function Main() {
           <div className='current'>
 
             <div className='currentDate'>
-              <p>{new Date(weatherData.dt * 1000).toDateString()} | Aktuelle Uhrzeit: {new Date(weatherData.dt * 1000).toLocaleTimeString([], {timeStyle: 'short'})}</p>
+              <p>{new Date(weatherData.dt * 1000).toDateString()} | Uhrzeit: {new Date(weatherData.dt * 1000).toLocaleTimeString([], {timeStyle: 'short'})}</p>
               <h1>{weatherData.name}, {weatherData.sys.country}</h1>
               <p>{weatherData.weather[0].main}</p>
             </div>
 
             <div className='currentWeather'>
-              <img src={iconCode()}></img>
+              <img alt='WetterBild' src={iconCode()}></img>
               <h1>{Math.round(main?.temp - 273)}°C</h1>
 
               <div className='currentInfo'>
-                <p>Gefühlt:</p> <p>{weatherData.main.feels_like}°C</p>
+                <p>Gefühlt:</p> <p>{Math.round(weatherData.main?.feels_like - 273)}°C</p>
                 <p>Windstärke:</p> <p>{weatherData.wind.speed} Km/h</p>
                 <p>Luftfeuchtigkeit:</p> <p>{weatherData.main.humidity}%</p>
               </div>
@@ -154,10 +156,11 @@ export default function Main() {
             </div>
 
             <div className='extraInfo'>
-              <h4>Aufgang: {new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString([], {timeStyle: 'short'})}</h4>
-              <h4>Untergang: {new Date(weatherData.sys.sunset * 1000).toLocaleTimeString([], {timeStyle: 'short'})}</h4>
-              <h4>Min: {Math.round(main?.temp_min - 273)}°C</h4>
-              <h4>Max: {Math.round(main?.temp_max - 273)}°C</h4>
+              <div><img alt='Sonnenaufgang' src='/sunrise.svg'></img><h4>: {new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString([], {timeStyle: 'short'})}</h4></div>
+              <div><img alt='Sonnenuntergang' src='/sunset.svg'></img><h4>: {new Date(weatherData.sys.sunset * 1000).toLocaleTimeString([], {timeStyle: 'short'})}</h4></div>
+              
+              <h4>H: {Math.round(main?.temp_min - 273)}°C</h4>
+              <h4>L: {Math.round(main?.temp_max - 273)}°C</h4>
             </div>
 
           </div>

@@ -5,7 +5,7 @@ export default function Header() {
   return(
     <nav className='Header'>
       <Link to="/">
-        <img src='font.png'></img>
+        <img alt='Logo-Schriftzug' src='font.png'></img>
       </Link>
     </nav>
   )
