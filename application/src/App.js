@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import Impressum from './components/Impressum';
+import DetailView from './components/Detail-View';
 
 import React from 'react';
 import {
@@ -22,6 +23,7 @@ class App extends React.Component {
             <Route path='/Impressum' element={<Impressum />} />
           </Routes>
           <Footer />
+          <DetailView />
         </BrowserRouter>
       </div>
   )

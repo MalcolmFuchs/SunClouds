@@ -1,0 +1,61 @@
+nav.DetailView {
+  display                 : grid;
+  grid-template-columns   : 1fr 1fr;
+  padding-bottom          : 20px;
+  width                   : 300px;
+  height                  : 75px;
+  place-items             : center;
+  place-content           : center;
+  place-self              : center;
+  column-gap              : 50px;
+  position                : sticky;
+  bottom                  : 0px;
+  background-color        : rgba(255, 255, 255, 0.75);
+  border-top-left-radius  : 10px;
+  border-top-right-radius : 10px;
+  backdrop-filter         : blur(10px);
+  box-shadow              : rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+
+  & > a {
+    display         : grid;
+    place-items     : center;
+    text-decoration : none;
+
+    img {
+      width       : 25px;
+      height      : 25px;
+      transition  : 0.5s all;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    & > p {
+      position          : relative;
+      bottom            : 0px;
+      left              : 0px;
+      padding           : 5px;
+      opacity           : 0;
+      transition        : 0.75s all;
+      background-color  : black;
+      border-radius     : 5px;
+      color             : white;
+      font-size         : 14px;
+    }
+
+    &:hover {
+      & > p {
+        opacity   : 1;
+        bottom    : 15px;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  nav.DetailView {
+    max-width   : 175px;
+    column-gap  : 0px;
+  }
+}

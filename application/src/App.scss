@@ -1,13 +1,13 @@
 div.app {
   display             : grid;
-  grid-template-rows  : auto 1fr auto;
+  grid-template-rows  : auto 1fr auto auto;
   align-items         : flex-start;
-  height              : 100vh;
-  padding             : 20px 0px;
   row-gap             : 20px;
+  min-height          : 100vh;
 
   @media (max-width: 600px) {
-    width           : 375px;
+    width           : 100%;
+    max-width       : 375px;
     padding         : unset;
     row-gap         : 0px;
   }
